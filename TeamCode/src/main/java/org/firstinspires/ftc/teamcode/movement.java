@@ -6,10 +6,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-    @TeleOp(name="Basic: Omni Linear OpMode", group="Linear OpMode")
-    @Disabled
+    //@TeleOp(name="Basic: Omni Linear OpMode", group="Linear OpMode")
+    //@Disabled
     public class movement extends LinearOpMode {
 
+        """
         // Declare OpMode members for each of the 4 motors.
         private ElapsedTime runtime = new ElapsedTime();
         private DcMotor frontLeftDrive = null;
@@ -106,6 +107,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
                 telemetry.addData("Front left/Right", "%4.2f, %4.2f", frontLeftPower, frontRightPower);
                 telemetry.addData("Back  left/Right", "%4.2f, %4.2f", backLeftPower, backRightPower);
                 telemetry.update();
-            }
+            }"""
         }
     }

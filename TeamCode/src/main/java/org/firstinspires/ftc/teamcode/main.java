@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class main extends LinearOpMode {
     @Override
     public void runOpMode() {
-
+        /*
         // Initialize motors
         // Front Left has the green sticker near it
         DcMotor frontLeftMotor = hardwareMap.dcMotor.get("frontLeft");
@@ -64,5 +64,14 @@ public class main extends LinearOpMode {
             frontRightMotor.setPower(frontRightPower);
             backRightMotor.setPower(backRightPower);
         }
+         */
+        while(OpModeIsActive()) {
+            movement.Drive();
+        }
+
+        telemetry.addData("Status", "Run Time: " + runtime.toString());
+        telemetry.addData("Front left/Right", "%4.2f, %4.2f", frontLeftPower, frontRightPower);
+        telemetry.addData("Back  left/Right", "%4.2f, %4.2f", backLeftPower, backRightPower);
+        telemetry.update();
     }
 }

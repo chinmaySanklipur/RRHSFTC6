@@ -24,7 +24,7 @@ If you are an Android Studio programmer, there are several ways to download this
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;git clone https://github.com/FIRST-Tech-Challenge/FtcRobotController.git</p>
 
-* Or, if you prefer, you can use the "Download Zip" button available through the main repository page.  Downloading the project as a .ZIP file will keep the size of the download manageable.
+* Or, if you prefer, you can use the "Download Zip" button available through the org.firstinspires.ftc.teamcode.main repository page.  Downloading the project as a .ZIP file will keep the size of the download manageable.
 
 * You can also download the project folder (as a .zip or .tar.gz archive file) from the Downloads subsection of the [Releases](https://github.com/FIRST-Tech-Challenge/FtcRobotController/releases) page for this repository.
 
@@ -53,9 +53,9 @@ For technical questions regarding the Control System or the FTC SDK, please visi
 ### Sample OpModes
 This project contains a large selection of Sample OpModes (robot code examples) which can be cut and pasted into your /teamcode folder to be used as-is, or modified to suit your team's needs.
 
-Samples Folder: &nbsp;&nbsp; [/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples](FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples)
+Samples Folder: &nbsp;&nbsp; [/FtcRobotController/src/org.firstinspires.ftc.teamcode.main/java/org/firstinspires/ftc/robotcontroller/external/samples](FtcRobotController/src/org.firstinspires.ftc.teamcode.main/java/org/firstinspires/ftc/robotcontroller/external/samples)
 
-The readme.md file located in the [/TeamCode/src/main/java/org/firstinspires/ftc/teamcode](TeamCode/src/main/java/org/firstinspires/ftc/teamcode) folder contains an explanation of the sample naming convention, and instructions on how to copy them to your own project space.
+The readme.md file located in the [/TeamCode/src/org.firstinspires.ftc.teamcode.main/java/org/firstinspires/ftc/teamcode](TeamCode/src/org.firstinspires.ftc.teamcode.main/java/org/firstinspires/ftc/teamcode) folder contains an explanation of the sample naming convention, and instructions on how to copy them to your own project space.
 
 # Release Information
 
@@ -524,10 +524,10 @@ This is a bug fix only release to address the following four issues.
   * Since the very first SDK release, OpMode crashes have put the robot into "EMERGENCY STOP" state, only showing the first line of the exception, and requiring the user to press "Restart Robot" to continue
   * Exceptions during an OpMode now open a popup window with the same color scheme as the log viewer, containing 15 lines of the exception stacktrace to allow easily tracing down the offending line without needing to connect to view logs over ADB or scroll through large amounts of logs in the log viewer.
   * The exception text in the popup window is both zoomable and scrollable just like a webpage.
-  * Pressing the "OK" button in the popup window will return to the main screen of the Driver Station and allow an OpMode to be run again immediately, without the need to perform a "Restart Robot"
+  * Pressing the "OK" button in the popup window will return to the org.firstinspires.ftc.teamcode.main screen of the Driver Station and allow an OpMode to be run again immediately, without the need to perform a "Restart Robot"
 * Adds new Java sample to demonstrate using a hardware class to abstract robot actuators, and share them across multiple OpModes.
-  * Sample OpMode is [ConceptExternalHardwareClass.java](FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples/ConceptExternalHardwareClass.java)
-  * Abstracted hardware class is [RobotHardware.java](FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples/RobotHardware.java)
+  * Sample OpMode is [ConceptExternalHardwareClass.java](FtcRobotController/src/org.firstinspires.ftc.teamcode.main/java/org/firstinspires/ftc/robotcontroller/external/samples/ConceptExternalHardwareClass.java)
+  * Abstracted hardware class is [RobotHardware.java](FtcRobotController/src/org.firstinspires.ftc.teamcode.main/java/org/firstinspires/ftc/robotcontroller/external/samples/RobotHardware.java)
 * Updates RobotAutoDriveByGyro_Linear Java sample to use REV Control/Expansion hub IMU.
 * Updates Vuforia samples to reference PowerPlay assets and have correct names and field locations of image targets.
 * Updates TensorFlow samples to reference PowerPlay assets.
@@ -646,7 +646,7 @@ This is a bug fix only release to address the following four issues.
 * Improves accuracy of ping measurement.
     * Fixes issue where the ping time showed as being higher than reality when initially connecting to or restarting the robot.
     * To see the full improvement, you must update both the Robot Controller and Driver Station apps.
-* Updates samples located at [/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples](FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples).
+* Updates samples located at [/FtcRobotController/src/org.firstinspires.ftc.teamcode.main/java/org/firstinspires/ftc/robotcontroller/external/samples](FtcRobotController/src/org.firstinspires.ftc.teamcode.main/java/org/firstinspires/ftc/robotcontroller/external/samples).
     * Added ConceptGamepadRumble and ConceptGamepadTouchpad samples to illustrate the use of these new gampad capabilities.
     * Condensed existing Vuforia samples into just 2 samples (ConceptVuforiaFieldNavigation & ConceptVuforiaFieldNavigationWebcam) showing how to determine the robot's location on the field using Vuforia. These both use the current season's Target images.
     * Added ConceptVuforiaDriveToTargetWebcam to illustrate an easy way to drive directly to any visible Vuforia target.
@@ -684,7 +684,7 @@ This is a bug fix only release to address the following four issues.
 * Attempts to automatically fix the condition where a Control Hub's internal Expansion Hub is not
   working by re-flashing its firmware
 * Makes various improvements to the Wi-Fi Direct pairing screen, especially in landscape mode
-* Makes the Robot Controller service no longer be categorically restarted when the main activity is brought to foreground
+* Makes the Robot Controller service no longer be categorically restarted when the org.firstinspires.ftc.teamcode.main activity is brought to foreground
     * (e.g. the service is no longer restarted simply by viewing the Self Inspect screen and pressing the back button)
     * It is still restarted if the Settings menu or Configure Robot menu is opened
 
@@ -1081,7 +1081,7 @@ Changes include:
  * Initial support for UVC compatible cameras
     - If UVC camera has a unique serial number, RC will detect and enumerate by serial number.
     - If UVC camera lacks a unique serial number, RC will only support one camera of that type connected.
-    - Calibration settings for a few cameras are included (see TeamCode/src/main/res/xml/teamwebcamcalibrations.xml for details).
+    - Calibration settings for a few cameras are included (see TeamCode/src/org.firstinspires.ftc.teamcode.main/res/xml/teamwebcamcalibrations.xml for details).
     - User can upload calibration files from Program and Manage web interface.
     - UVC cameras seem to draw a fair amount of electrical current from the USB bus.
          + This does not appear to present any problems for the REV Robotics Control Hub.

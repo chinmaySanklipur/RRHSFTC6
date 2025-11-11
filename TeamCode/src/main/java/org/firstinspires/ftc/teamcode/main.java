@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp
+<<<<<<< Updated upstream
 public class main extends LinearOpMode {
     @Override
     public void runOpMode() {
@@ -75,3 +76,26 @@ public class main extends LinearOpMode {
         telemetry.update();
     }
 }
+=======
+public class main extends LinearOpMode
+{
+    private DcMotor frontLeft = hardwareMap.get(DcMotor.class, "front_left_drive");
+    private DcMotor backLeft = hardwareMap.get(DcMotor.class, "back_left_drive");
+    private DcMotor frontRight = hardwareMap.get(DcMotor.class, "front_right_drive");
+    private DcMotor backRight = hardwareMap.get(DcMotor.class, "back_right_drive");
+    private movement drive = new movement(frontLeft, frontRight, backLeft, backRight);
+
+    @Override
+    public void runOpMode() throws InterruptedException
+    {
+        drive.teleopDrive();
+
+        // Show the elapsed game time and wheel power.
+        telemetry.addData("Status", "Run Time: " + runtime.toString());
+        telemetry.addData("Front left/Right", "%4.2f, %4.2f", drive.frontLeftPower, drive.frontRightPower);
+        telemetry.addData("Back  left/Right", "%4.2f, %4.2f", backLeftPower, backRightPower);
+        telemetry.update();
+    }
+}
+
+>>>>>>> Stashed changes

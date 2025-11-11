@@ -19,7 +19,7 @@
         android:name="org.firstinspires.latestSupportedControlHubVersion"
         android:value="1" />
 
-    <!-- The main robot controller activity -->
+    <!-- The org.firstinspires.ftc.teamcode.main robot controller activity -->
     <activity android:name="org.firstinspires.ftc.robotcontroller.internal.PermissionValidatorWrapper"
               android:screenOrientation="fullUser"
               android:configChanges="orientation|screenSize"
@@ -48,9 +48,9 @@
         android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
         android:resource="@xml/device_filter" />
 
-      <!--org.firstinspires.main.entry indicates that this app is compatible with the Dragonboard Control Hub-->
+      <!--org.firstinspires.org.firstinspires.ftc.teamcode.main.entry indicates that this app is compatible with the Dragonboard Control Hub-->
       <meta-data
-          android:name="org.firstinspires.main.entry"
+          android:name="org.firstinspires.org.firstinspires.ftc.teamcode.main.entry"
           android:value="true" />
     </activity>
 

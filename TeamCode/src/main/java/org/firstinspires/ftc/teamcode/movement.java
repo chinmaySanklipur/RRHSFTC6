@@ -1,19 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-<<<<<<< Updated upstream
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
-    public class movement {
-
-        // Declare OpMode members for each of the 4 motors.
-        public ElapsedTime runtime = new ElapsedTime();
-        public DcMotor frontLeftDrive = null;
-        public DcMotor backLeftDrive = null;
-        public DcMotor frontRightDrive = null;
-        public DcMotor backRightDrive = null;
-        public void Drive() {
-=======
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -23,40 +13,23 @@ import com.qualcomm.robotcore.util.ElapsedTime;
         public DcMotor backLeftDrive;
         public DcMotor frontRightDrive;
         public DcMotor backRightDrive;
-        public movement(DcMotor frontLeft, DcMotor frontRight, DcMotor backLeft, DcMotor backRight)
+
+        public movement(HardwareMap hardwareMap)
         {
-            frontLeftDrive = frontLeft;
-            backLeftDrive = backLeft;
-            frontRightDrive = frontRight;
-            backRightDrive = backRight;
-        }
-        // Initialize the hardware variables. Note that the strings used here must correspond
-        // to the names assigned during the robot configuration step on the DS or RC devices.
+            // Initialize the hardware variables. Note that the strings used here must correspond
+            // to the names assigned during the robot configuration step on the DS or RC devices.
+            frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left_motor");
+            backLeftDrive = hardwareMap.get(DcMotor.class, "front_right_motor");
+            frontRightDrive = hardwareMap.get(DcMotor.class, "back_left_motor");
+            backRightDrive = hardwareMap.get(DcMotor.class, "back_right_motor");
 
->>>>>>> Stashed changes
-
-
-
-        public void teleopDrive() {
-
-            // ########################################################################################
-            // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
-            // ########################################################################################
-            // Most robots need the motors on one side to be reversed to drive forward.
-            // The motor reversals shown here are for a "direct drive" robot (the wheels turn the same direction as the motor shaft)
-            // If your robot has additional gear reductions or uses a right-angled drive, it's important to ensure
-            // that your motors are turning in the correct direction.  So, start out with the reversals here, BUT
-            // when you first test your robot, push the left joystick forward and observe the direction the wheels turn.
-            // Reverse the direction (flip FORWARD <-> REVERSE ) of any wheel that runs backward
-            // Keep testing until ALL the wheels move the robot forward when you push the left joystick forward.
-<<<<<<< Updated upstream
             frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
             backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
             frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
             backRightDrive.setDirection(DcMotor.Direction.REVERSE);
-=======
->>>>>>> Stashed changes
+        }
 
+        public void teleopDrive(Gamepad gamepad1) {
                 double max;
 
                 // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
@@ -85,7 +58,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
                 }
 
                 // initializing power variables
-                public double frontLeftPower = 0;
+                double frontLeftPower = 0;
                 double frontRightPower = 0;
                 double backLeftPower = 0;
                 double backRightPower = 0;
@@ -144,4 +117,3 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
             }
         }
-    }

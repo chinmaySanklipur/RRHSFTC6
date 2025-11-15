@@ -21,13 +21,13 @@ import com.qualcomm.robotcore.util.ElapsedTime;
         {
             // Initialize the hardware variables. Note that the strings used here must correspond
             // to the names assigned during the robot configuration step on the DS or RC devices.
-            frontLeftDrive = hardwareMap.get(DcMotor.class, "front_left_motor");
-            backLeftDrive = hardwareMap.get(DcMotor.class, "front_right_motor");
-            frontRightDrive = hardwareMap.get(DcMotor.class, "back_left_motor");
-            backRightDrive = hardwareMap.get(DcMotor.class, "back_right_motor");
-            shooterOne = hardwareMap.get(DcMotor.class, "first_shooter_motor");
-            shooterTwo = hardwareMap.get(DcMotor.class, "second_shooter_motor");
-            intake = hardwareMap.get(DcMotor.class, "intake_motor");
+            frontLeftDrive = hardwareMap.get(DcMotor.class, "frontLeft");
+            backLeftDrive = hardwareMap.get(DcMotor.class, "frontRight");
+            frontRightDrive = hardwareMap.get(DcMotor.class, "backLeft");
+            backRightDrive = hardwareMap.get(DcMotor.class, "backRight");
+            shooterOne = hardwareMap.get(DcMotor.class, "firstShooter");
+            shooterTwo = hardwareMap.get(DcMotor.class, "secondShooter");
+            intake = hardwareMap.get(DcMotor.class, "intake");
 
             frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
             backLeftDrive.setDirection(DcMotor.Direction.FORWARD);

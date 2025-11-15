@@ -13,6 +13,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
         public DcMotor backLeftDrive;
         public DcMotor frontRightDrive;
         public DcMotor backRightDrive;
+        public DcMotor shooterOne;
+        public DcMotor shooterTwo;
+        public DcMotor intake;
 
         public movement(HardwareMap hardwareMap)
         {
@@ -22,11 +25,18 @@ import com.qualcomm.robotcore.util.ElapsedTime;
             backLeftDrive = hardwareMap.get(DcMotor.class, "front_right_motor");
             frontRightDrive = hardwareMap.get(DcMotor.class, "back_left_motor");
             backRightDrive = hardwareMap.get(DcMotor.class, "back_right_motor");
+            shooterOne = hardwareMap.get(DcMotor.class, "first_shooter_motor");
+            shooterTwo = hardwareMap.get(DcMotor.class, "second_shooter_motor");
+            intake = hardwareMap.get(DcMotor.class, "intake_motor");
 
             frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
             backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
             frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
             backRightDrive.setDirection(DcMotor.Direction.REVERSE);
+            shooterOne.setDirection(DcMotor.Direction.FORWARD);
+            shooterTwo.setDirection(DcMotor.Direction.REVERSE);
+            intake.setDirection(DcMotor.Direction.FORWARD);
+
         }
 
         public void teleopDrive(Gamepad gamepad1) {
@@ -36,6 +46,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
                 double axial = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
                 double lateral = gamepad1.left_stick_x;
                 double yaw = gamepad1.right_stick_x;
+
+                double rightTriggerValue = gamepad1.right_trigger;
+                double leftTriggerValue = gamepad1.left_trigger;
+
 
                 // Combine the joystick requests for each axis-motion to determine each wheel's power.
                 // Set up a variable for each drive wheel to save the power level for telemetry.
@@ -84,6 +98,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
                     frontRightDrive.setPower(frontRightPower);
                     backLeftDrive.setPower(backLeftPower);
                     backRightDrive.setPower(backRightPower);
+
+                    shooterOne.setPower(rightTriggerValue);
+                    shooterTwo.setPower(rightTriggerValue);
+                    intake.setPower(leftTriggerValue);
 
                     try {
                         Thread.sleep(100);

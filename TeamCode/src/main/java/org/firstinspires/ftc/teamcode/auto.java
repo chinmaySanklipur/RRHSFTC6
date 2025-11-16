@@ -31,19 +31,21 @@ public class auto extends LinearOpMode{
         Heading (rotation) is measured in radians, with $0$ or $2\pi$ radians pointing along the positive X-axis (toward Blue),
         and $\pi/2$ (90 degrees) pointing along the positive Y-axis (toward the Audience).
          */
-        Pose2d startPos = new Pose2d(48, -60, Math.toRadians(90));
+        Pose2d startPos = new Pose2d(-36, 36, Math.toRadians(315));
         // (x in inches, y in inches, angle in radians); placing gemini coordinates for red side wall pos as placeholder
 
         drive.setPoseEstimate(startPos);
 
         // TODO: autonomous path --> use TrajectorySequenceBuilder here?
         TrajectorySequenceBuilder path = drive.trajectorySequenceBuilder(startPos);
+            path.forward(20);
 
+        TrajectorySequence pathAct = path.build();
 
         waitForStart();
 
         if (isStopRequested()) {
-            return;
+            drive.followTrajectorySequence(pathAct);
         }
 
         // TODO: figure this part out

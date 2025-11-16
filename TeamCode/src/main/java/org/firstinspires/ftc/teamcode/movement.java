@@ -9,110 +9,127 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
     public class movement {
-        private DcMotor frontLeftDrive;
+        public DcMotor frontLeftDrive;
         public DcMotor backLeftDrive;
         public DcMotor frontRightDrive;
         public DcMotor backRightDrive;
-        public DcMotor shooterOne;
-        public DcMotor shooterTwo;
-        public DcMotor intake;
+        //public DcMotor shooterOne;
+        //public DcMotor shooterTwo;
+        //public DcMotor intake;
 
-        public movement(HardwareMap hardwareMap)
-        {
+        public movement(HardwareMap hardwareMap) {
             // Initialize the hardware variables. Note that the strings used here must correspond
             // to the names assigned during the robot configuration step on the DS or RC devices.
             frontLeftDrive = hardwareMap.get(DcMotor.class, "frontLeft");
-            backLeftDrive = hardwareMap.get(DcMotor.class, "frontRight");
-            frontRightDrive = hardwareMap.get(DcMotor.class, "backLeft");
+            backLeftDrive = hardwareMap.get(DcMotor.class, "backLeft"); // change to frontRight if it breaks
+            frontRightDrive = hardwareMap.get(DcMotor.class, "frontRight");
             backRightDrive = hardwareMap.get(DcMotor.class, "backRight");
-            shooterOne = hardwareMap.get(DcMotor.class, "firstShooter");
-            shooterTwo = hardwareMap.get(DcMotor.class, "secondShooter");
-            intake = hardwareMap.get(DcMotor.class, "intake");
+            //shooterOne = hardwareMap.get(DcMotor.class, "shooterLeft");
+            //shooterTwo = hardwareMap.get(DcMotor.class, "shooterRight");
+            //intake = hardwareMap.get(DcMotor.class, "intakeMotor");
 
             frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
             backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
             frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
             backRightDrive.setDirection(DcMotor.Direction.REVERSE);
-            shooterOne.setDirection(DcMotor.Direction.FORWARD);
-            shooterTwo.setDirection(DcMotor.Direction.REVERSE);
-            intake.setDirection(DcMotor.Direction.FORWARD);
-
+            //shooterOne.setDirection(DcMotor.Direction.FORWARD);
+            //shooterTwo.setDirection(DcMotor.Direction.REVERSE);
+            //intake.setDirection(DcMotor.Direction.FORWARD);
         }
 
         public void teleopDrive(Gamepad gamepad1) {
-                double max;
+            double max;
 
-                // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
-                double axial = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
-                double lateral = gamepad1.left_stick_x;
-                double yaw = gamepad1.right_stick_x;
+            // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
+            double axial = gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
+            double lateral = -gamepad1.left_stick_x;
+            double yaw = -gamepad1.right_stick_x;
 
-                double rightTriggerValue = gamepad1.right_trigger;
-                double leftTriggerValue = gamepad1.left_trigger;
+            /*
+            double rightTriggerValue = gamepad1.right_trigger;
+            double leftTriggerValue = gamepad1.left_trigger;
+
+             */
 
 
-                // Combine the joystick requests for each axis-motion to determine each wheel's power.
-                // Set up a variable for each drive wheel to save the power level for telemetry.
-                double frontLeftPowerSet = axial + lateral + yaw;
-                double frontRightPowerSet = axial - lateral - yaw;
-                double backLeftPowerSet = axial - lateral + yaw;
-                double backRightPowerSet = axial + lateral - yaw;
 
-                // Normalize the values so no wheel power exceeds 100%
-                // This ensures that the robot maintains the desired motion.
-                max = Math.max(Math.abs(frontLeftPowerSet), Math.abs(frontRightPowerSet));
-                max = Math.max(max, Math.abs(backLeftPowerSet));
-                max = Math.max(max, Math.abs(backRightPowerSet));
+            // Combine the joystick requests for each axis-motion to determine each wheel's power.
+            // Set up a variable for each drive wheel to save the power level for telemetry.
+            double frontLeftPowerSet = axial + lateral + yaw;
+            double frontRightPowerSet = axial - lateral - yaw;
+            double backLeftPowerSet = axial - lateral + yaw;
+            double backRightPowerSet = axial + lateral - yaw;
 
-                if (max > 1.0) {
-                    frontLeftPowerSet /= max;
-                    frontRightPowerSet /= max;
-                    backLeftPowerSet /= max;
-                    backRightPowerSet /= max;
-                }
 
-                // initializing power variables
-                double frontLeftPower = 0;
-                double frontRightPower = 0;
-                double backLeftPower = 0;
-                double backRightPower = 0;
 
-                // incrementing power variables to meet values within a second
-                for (int t = 0; t < 10; t++)
+
+            // Normalize the values so no wheel power exceeds 100%
+            // This ensures that the robot maintains the desired motion.
+            max = Math.max(Math.abs(frontLeftPowerSet), Math.abs(frontRightPowerSet));
+            max = Math.max(max, Math.abs(backLeftPowerSet));
+            max = Math.max(max, Math.abs(backRightPowerSet));
+
+            if (max > 1.0) {
+                frontLeftPowerSet /= max;
+                frontRightPowerSet /= max;
+                backLeftPowerSet /= max;
+                backRightPowerSet /= max;
+            }
+
+            // initializing power variables
+            double frontLeftPower = 0;
+            double frontRightPower = 0;
+            double backLeftPower = 0;
+            double backRightPower = 0;
+
+            frontLeftPower = frontLeftPowerSet;
+            frontRightPower = frontRightPowerSet;
+            backLeftPower = backLeftPowerSet;
+            backRightPower = backRightPowerSet;
+
+
+            // incrementing power variables to meet values within a second
+            /*
+            for (int t = 0; t < 100; t++)
                 {
                     if (frontLeftPower < frontLeftPowerSet) {
-                        frontLeftPower += 0.1 * frontLeftPowerSet;
+                        frontLeftPower += 0.01 * frontLeftPowerSet;
                     }
                     if (frontRightPower < frontRightPowerSet) {
-                        frontRightPower += 0.1 * frontRightPowerSet;
+                        frontRightPower += 0.01 * frontRightPowerSet;
                     }
                     if (backLeftPower < backLeftPowerSet) {
-                        backLeftPower += 0.1 * backLeftPowerSet;
+                        backLeftPower += 0.01 * backLeftPowerSet;
                     }
                     if (backRightPower < backRightPowerSet) {
-                        backRightPower += 0.1 * backRightPowerSet;
+                        backRightPower += 0.01 * backRightPowerSet;
                     }
 
-                    // Send calculated power to wheels
-                    frontLeftDrive.setPower(frontLeftPower);
-                    frontRightDrive.setPower(frontRightPower);
-                    backLeftDrive.setPower(backLeftPower);
-                    backRightDrive.setPower(backRightPower);
+             */
 
-                    shooterOne.setPower(rightTriggerValue);
-                    shooterTwo.setPower(rightTriggerValue);
-                    intake.setPower(leftTriggerValue);
+            // Send calculated power to wheels
+            frontLeftDrive.setPower(frontLeftPower);
+            frontRightDrive.setPower(frontRightPower);
+            backLeftDrive.setPower(backLeftPower);
+            backRightDrive.setPower(backRightPower);
 
+            /*
+            shooterOne.setPower(rightTriggerValue);
+            shooterTwo.setPower(rightTriggerValue);
+            intake.setPower(leftTriggerValue);
+             */
+
+                    /*
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(10);
                     }
                     catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
+                    */
 
-                }
-
-
+        }
+    }
 
                 // This is test code:
                 //
@@ -133,5 +150,4 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 
-            }
-        }
+        //}

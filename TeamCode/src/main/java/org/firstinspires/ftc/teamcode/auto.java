@@ -21,37 +21,6 @@ public class auto extends LinearOpMode{
 
     @Override
     public void runOpMode() throws InterruptedException{
-        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-        //TODO: Figure out the coordinates of the starting position; (x, y, radians *use Math.toRadians()); coordinates are calculated in inches
-        //TODO: REPLACE COORDINATES!!!!!
-        /*The origin (0, 0) is typically set at the center of the FTC field.
-        The positive X-axis runs toward the Blue Alliance side.
-        The positive Y-axis runs toward the Audience side.
-        Heading (rotation) is measured in radians, with $0$ or $2\pi$ radians pointing along the positive X-axis (toward Blue),
-        and $\pi/2$ (90 degrees) pointing along the positive Y-axis (toward the Audience).
-         */
-        Pose2d startPos = new Pose2d(-36, 36, Math.toRadians(315));
-        // (x in inches, y in inches, angle in radians); placing gemini coordinates for red side wall pos as placeholder
-
-        drive.setPoseEstimate(startPos);
-
-        // TODO: autonomous path --> use TrajectorySequenceBuilder here?
-        TrajectorySequenceBuilder path = drive.trajectorySequenceBuilder(startPos);
-            path.forward(20);
-
-        TrajectorySequence pathAct = path.build();
-
-        waitForStart();
-
-        if (isStopRequested()) {
-            drive.followTrajectorySequence(pathAct);
-        }
-
-        // TODO: figure this part out
-        /*if (opModeIsActive()) {
-            driveForward(10, 0.5); // Drive forward 10 inches at 50% power
-            // Example: turn(90, 0.7); // Turn 90 degrees at 70% power
-        }*/
     }
 }

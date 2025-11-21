@@ -10,9 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @TeleOp
 public class main extends LinearOpMode {
     private movement drive;
-
-    public DcMotor shooterOne;
-    public DcMotor shooterTwo;
+    public DcMotor shooter;
     public DcMotor intake;
 
 
@@ -20,12 +18,10 @@ public class main extends LinearOpMode {
     public void runOpMode() {
         drive = new movement(hardwareMap);
 
-        shooterOne = hardwareMap.get(DcMotor.class, "shooterLeft");
-        shooterTwo = hardwareMap.get(DcMotor.class, "shooterRight");
+        shooter = hardwareMap.get(DcMotor.class, "shooterMotor");
         intake = hardwareMap.get(DcMotor.class, "intakeMotor");
 
-        shooterOne.setDirection(DcMotor.Direction.FORWARD);
-        shooterTwo.setDirection(DcMotor.Direction.REVERSE);
+        shooter.setDirection(DcMotor.Direction.FORWARD); // might need edits based on testing
         intake.setDirection(DcMotor.Direction.REVERSE);
 
         double rightTriggerValue;
@@ -45,8 +41,8 @@ public class main extends LinearOpMode {
             rightTriggerValue = gamepad1.right_trigger;
             leftTriggerValue = gamepad1.left_trigger;
 
-            intake.setPower(-leftTriggerValue);
             intake.setPower(rightTriggerValue);
+            shooter.setPower(leftTriggerValue);
 
             drive.teleopDrive(gamepad1);
 

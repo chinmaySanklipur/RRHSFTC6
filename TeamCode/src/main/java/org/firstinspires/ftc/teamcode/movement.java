@@ -13,8 +13,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
         public DcMotor backLeftDrive;
         public DcMotor frontRightDrive;
         public DcMotor backRightDrive;
-        //public DcMotor shooterOne;
-        //public DcMotor shooterTwo;
+
         //public DcMotor intake;
 
         public movement(HardwareMap hardwareMap) {
@@ -24,16 +23,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
             backLeftDrive = hardwareMap.get(DcMotor.class, "backLeft"); // change to frontRight if it breaks
             frontRightDrive = hardwareMap.get(DcMotor.class, "frontRight");
             backRightDrive = hardwareMap.get(DcMotor.class, "backRight");
-            //shooterOne = hardwareMap.get(DcMotor.class, "shooterLeft");
-            //shooterTwo = hardwareMap.get(DcMotor.class, "shooterRight");
             //intake = hardwareMap.get(DcMotor.class, "intakeMotor");
 
             frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
             backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
             frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
             backRightDrive.setDirection(DcMotor.Direction.REVERSE);
-            //shooterOne.setDirection(DcMotor.Direction.FORWARD);
-            //shooterTwo.setDirection(DcMotor.Direction.REVERSE);
             //intake.setDirection(DcMotor.Direction.FORWARD);
         }
 
@@ -48,7 +43,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
             /*
             double rightTriggerValue = gamepad1.right_trigger;
             double leftTriggerValue = gamepad1.left_trigger;
-
              */
 
 
@@ -113,11 +107,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
             backLeftDrive.setPower(backLeftPower);
             backRightDrive.setPower(backRightPower);
 
-            /*
-            shooterOne.setPower(rightTriggerValue);
-            shooterTwo.setPower(rightTriggerValue);
-            intake.setPower(leftTriggerValue);
-             */
+            //intake.setPower(leftTriggerValue);
 
                     /*
                     try {

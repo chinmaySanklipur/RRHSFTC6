@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.acmerobotics.dashboard.FtcDashboard;;
 
 @TeleOp
 public class main extends LinearOpMode {
@@ -26,6 +27,9 @@ public class main extends LinearOpMode {
 
         double rightTriggerValue;
         double leftTriggerValue;
+
+        FtcDashboard dashboard = FtcDashboard.getInstance();
+        dashboard.start();
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();

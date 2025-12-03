@@ -47,9 +47,9 @@ public class Constants {
                             RevHubOrientationOnRobot.UsbFacingDirection.UP
                     )
             )
-            .forwardTicksToInches(0.010611712119665336)
+            .forwardTicksToInches(0.0.0395724)
             .strafeEncoderDirection(Encoder.REVERSE)
-            .forwardEncoderDirection(Encoder.REVERSE)
+            .forwardEncoderDirection(Encoder.FORWARD)
 
             /*
             .forwardPodY(distance of the odon wheel from the center(will be +y))

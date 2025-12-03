@@ -4,6 +4,7 @@ import com.pedropathing.follower.Follower;
 import com.pedropathing.follower.FollowerConstants;
 import com.pedropathing.ftc.FollowerBuilder;
 import com.pedropathing.ftc.drivetrains.MecanumConstants;
+import com.pedropathing.ftc.localization.Encoder;
 import com.pedropathing.ftc.localization.constants.TwoWheelConstants;
 import com.pedropathing.paths.PathConstraints;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
@@ -46,6 +47,10 @@ public class Constants {
                             RevHubOrientationOnRobot.UsbFacingDirection.UP
                     )
             )
+            .forwardTicksToInches(0.010611712119665336)
+            .strafeEncoderDirection(Encoder.REVERSE)
+            .forwardEncoderDirection(Encoder.REVERSE)
+
             /*
             .forwardPodY(distance of the odon wheel from the center(will be +y))
             .strafePodX(distance of the odon wheel from the center(will be -x))

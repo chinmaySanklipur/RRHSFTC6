@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 
 @TeleOp
@@ -22,8 +23,8 @@ public class main extends LinearOpMode {
         shooter.setDirection(DcMotor.Direction.FORWARD); // might need edits based on testing
         intake.setDirection(DcMotor.Direction.REVERSE);
 
-        double rightTriggerValue;
-        double leftTriggerValue;
+        double rightTriggerValue = 0;
+        double leftTriggerValue = 0;
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -36,8 +37,10 @@ public class main extends LinearOpMode {
             telemetry.addData("LT", gamepad1.left_trigger);
             telemetry.update();
 
-            rightTriggerValue = gamepad1.right_trigger;
-            leftTriggerValue = gamepad1.left_trigger;
+            if(gamepad1.right_trigger > 0)
+                rightTriggerValue = 1;
+            if(gamepad1.left_trigger > 0)
+                leftTriggerValue = 1;
 
             intake.setPower(rightTriggerValue);
             shooter.setPower(leftTriggerValue);

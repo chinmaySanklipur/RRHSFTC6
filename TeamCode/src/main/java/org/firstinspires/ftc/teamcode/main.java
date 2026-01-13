@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -25,9 +24,6 @@ public class main extends LinearOpMode {
 
         double rightTriggerValue;
         double leftTriggerValue;
-
-        FTCDashboard dashboard = FtcDashboard.getInstance();
-        dashboard.start();
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();

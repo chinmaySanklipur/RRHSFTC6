@@ -37,6 +37,12 @@ public class movement {
             double lateral = -gamepad1.left_stick_x;
             double yaw = -gamepad1.right_stick_x;
 
+            /* GEMINI'S PROPOSED CODE:
+            double axial = -gamepad1.left_stick_y;
+            double lateral = gamepad1.left_stick_x;
+            double yaw = gamepad1.right_stick_x;
+             */
+
             /*
             double rightTriggerValue = gamepad1.right_trigger;
             double leftTriggerValue = gamepad1.left_trigger;
@@ -50,8 +56,6 @@ public class movement {
             double frontRightPowerSet = axial - lateral - yaw;
             double backLeftPowerSet = axial - lateral + yaw;
             double backRightPowerSet = axial + lateral - yaw;
-
-
 
 
             // Normalize the values so no wheel power exceeds 100%
